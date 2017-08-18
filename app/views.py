@@ -21,7 +21,7 @@ def message(request):
     content_name = received_json_data['content']
     content_type = received_json_data['type']
 
-    content_name = str(content_name).upper()
+
 
     if content_name == '달걀 검사하기':
         return JsonResponse({
@@ -36,6 +36,19 @@ def message(request):
     egg_list = db_to_views()
     all_list = []
     #print((egg_list))
+
+    consonant_vowel = ['ㄱ','ㄴ','ㄷ','ㄹ','ㅁ','ㅂ','ㅅ','ㅇ','ㅈ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ','ㅏ','ㅑ','ㅓ','ㅕ','ㅗ','ㅛ',
+                       'ㅜ','ㅠ','ㅡ','ㅣ']
+
+    content_name = str(content_name).upper()
+    #사용자입력 값 소문자->대문자
+    content_name = str(content_name).replace(' ', '')
+    #사용자입력 값 공백 삭제
+
+    for ch in consonant_vowel:
+        if ch in content_name:
+            content_name = content_name.replace(ch, '')
+            #사용자 값 자모음 오타 삭제
 
     for i in range(0, len(egg_list)):
         all_list.append(egg_list[i][0])

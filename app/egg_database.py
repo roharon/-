@@ -39,8 +39,23 @@ def Crawl():
 def egg_list():
 
     #con = sqlite3.connect('./DB/egg_list.db')
-    con = sqlite3.connect('../DB/egg_list.db')
+    con = sqlite3.connect('/home/roharon98/Egg/DB/egg_list.db')
     cur = con.cursor()
+
+    try:
+        cur.execute("DELETE FROM 연번")
+        cur.execute("DELETE FROM 시도")
+        cur.execute("DELETE FROM 농가명")
+        cur.execute("DELETE FROM 주소")
+        cur.execute("DELETE FROM 인증사항")
+        cur.execute("DELETE FROM 검사기관")
+        cur.execute("DELETE FROM 시료채취일")
+        cur.execute("DELETE FROM 검출농약")
+        cur.execute("DELETE FROM 검출양")
+        cur.execute("DELETE FROM 기준")
+        cur.execute("DELETE FROM 난각코드")
+    except:
+        pass
 
     value_dict = {}
     temp = Crawl()[0]
