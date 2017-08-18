@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .db_to import db_to_views
-from .loading import loading_list
 import json
 
 
@@ -55,6 +54,8 @@ def message(request):
     print(all_list)
     if content_name in all_list:
         answer = '살충제 달걀 상품입니다.'
+    elif content_name == '':
+        answer = '다시 입력해주세요.'
     else:
         answer = '안전한 달걀 상품입니다.'
 
