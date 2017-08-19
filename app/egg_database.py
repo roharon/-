@@ -43,21 +43,9 @@ def egg_list():
     con = sqlite3.connect('/home/roharon98/egg/DB/egg_list.db')
     cur = con.cursor()
 
+
     try:
-        cur.execute("DELETE FROM 연번")
-        cur.execute("DELETE FROM 시도")
-        cur.execute("DELETE FROM 농가명")
-        cur.execute("DELETE FROM 주소")
-        cur.execute("DELETE FROM 사육규모")
-        cur.execute("DELETE FROM 생산량")
-        cur.execute("DELETE FROM 인증사항")
-        cur.execute("DELETE FROM 검사기관")
-        cur.execute("DELETE FROM 시료채취일")
-        cur.execute("DELETE FROM 검출농약")
-        cur.execute("DELETE FROM 검출양")
-        cur.execute("DELETE FROM 기준")
-        cur.execute("DELETE FROM 난각코드")
-        cur.execute("DELETE FROM 비고")
+        cur.execute("DELETE FROM Egg")
     except:
         pass
 
@@ -68,7 +56,8 @@ def egg_list():
     print(listing_size)
     try:
         print('try구문')
-        cur.execute("CREATE TABLE Egg(연번 TEXT, 시도 TEXT, 농가명 TEXT, 주소 TEXT, 사육규모 TEXT, 생산량 TEXT, 인증사항 TEXT, 검사기관 TEXT, "
+        cur.execute("CREATE TABLE Egg(연번 TEXT, 시도 TEXT, 농가명 TEXT, 주소 TEXT, 사육규모 TEXT, 생산량 TEXT,"
+                    " 인증사항 TEXT, 검사기관 TEXT, "
                     "시료채취일 TEXT, 검출농약 TEXT, 검출양 TEXT, 기준 TEXT, 난각코드 TEXT, 비고 TEXT );")
     except:
         pass
