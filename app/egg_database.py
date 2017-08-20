@@ -14,7 +14,7 @@ def Crawl():
 
     for eggs in egg_lists:
         data.append(eggs.text)
-    data = data[4:]
+    data = data[4:].replace('\n', '')
     #테이블에 보이는 연번부터
     #print(data)
 

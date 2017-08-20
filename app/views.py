@@ -79,14 +79,29 @@ def message(request):
             #사용자 값 자모음 오타 삭제
 
     for i in range(0, len(egg_list)):
-        all_list.append(egg_list[i][0])
+        all_list.append(egg_list[i][0].replace('\n', ''))
     print(all_list)
-    if content_name in all_list:
-        answer = '살충제 달걀 상품입니다.'
-    elif content_name == '':
-        answer = '다시 입력해주세요.'
-    else:
+
+    temp = 0
+    for i in range(0, len(egg_list)):
+        egg = egg_list[i][0].replace('\n', '')
+        if content_name == '':
+            answer = '다시 입력해주세요.'
+            break
+            
+        if egg in content_name:
+            print(content_name + '  ' + egg)
+            answer = '살충제 달걀 상품입니다.'
+            break
+        elif content_name in egg:
+            print(content_name + '  ' + egg)
+            answer = '살충제 달걀 상품입니다.'
+            break
+        else:
+            temp = i + 1
+    if temp == len(egg_list):
         answer = '안전한 달걀 상품입니다.'
+
 
 
     if content_type == 'photo':
